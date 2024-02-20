@@ -1,17 +1,15 @@
-FROM node:20.10
+FROM node:alpine
 
 WORKDIR /app
 
 COPY . .
 
-USER root
-
 EXPOSE 3000
 
-RUN apt-get update -y && \
-    apt-get install -y curl && \
+RUN apk update && \
+    apk add --no-cache curl && \
     chmod 777 /app/index.js && \
     chmod -R 777 /app && \
     npm install
 
-CMD ["node", "index.js"]      
+CMD ["node", "index.js"]
