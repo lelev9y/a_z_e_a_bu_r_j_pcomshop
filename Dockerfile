@@ -1,6 +1,6 @@
 FROM node:20.10
 WORKDIR /app
-COPY index.js package.json ./
+COPY . .
 USER root
 EXPOSE 3000
 RUN apt-get update -y && \
@@ -8,4 +8,4 @@ RUN apt-get update -y && \
     chmod 777 /app/index.js && \
     chmod -R 777 /app && \
     npm install
-CMD ["node", "index.js"]
+CMD ["node", "index.js"]      
